@@ -1,17 +1,22 @@
 fun main(args: Array<String>) {
     for(counter in 1..10) {
-        val fortune = getFortuneCookie()
+        val fortune = getFortuneCookie(getBirthday())
 
-        if(fortune.startsWith("\"Enter"))
+        if(fortune.startsWith("Enter"))
             println("$fortune \n")
         else
             println("Your fortune is : $fortune \n")
 
-        // Loops for 10 times or until the fortune is "Take it easy and enjoy life!".
         if(fortune.startsWith("Take")) break
     }
 }
-fun getFortuneCookie() : String{
+
+fun getBirthday() :Int{
+    println("Enter your Birthday: ")
+    return readLine()?.toIntOrNull() ?: -1
+}
+
+fun getFortuneCookie(day: Int) : String{
     val fortunes = listOf("You will have a great day!",
         "Things will go well for you today.",
         "Enjoy a wonderful day of success.",
@@ -20,10 +25,15 @@ fun getFortuneCookie() : String{
         "Take it easy and enjoy life!",
         "Treasure your friends because they are your greatest fortune.")
 
-        println("Enter your Birthday: ")
-        val birthday = readLine()!!.toIntOrNull()
-        val index = birthday?.rem(fortunes.size) ?: -1
-
-        // Notice return statement can be lifted out of if..else/when. Since if..else/when can be used as expressions in Kotlin.
-        return if(index != -1) fortunes[index] else "\"Enter a valid Day!\""
+    return when(day){
+            in 1..5 -> fortunes[0]
+            in 6..8 -> fortunes[1]
+            in 9..14 -> fortunes[2]
+            in 15..20 -> fortunes[3]
+            in 21..22 -> fortunes[4]
+            in 23..25 -> fortunes[5]
+            in 25..31 -> fortunes[6]
+            else -> "Enter a valid Day."
+        }
 }
+
