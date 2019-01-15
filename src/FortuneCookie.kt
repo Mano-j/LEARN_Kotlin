@@ -1,7 +1,11 @@
 fun main(args: Array<String>) {
     for(counter in 1..10) {
         val fortune = getFortuneCookie()
-        println("Your fortune is : $fortune \n")
+
+        if(fortune.startsWith("\"Enter"))
+            println("$fortune \n")
+        else
+            println("Your fortune is : $fortune \n")
 
         // Loops for 10 times or until the fortune is "Take it easy and enjoy life!".
         if(fortune.startsWith("Take")) break
@@ -21,5 +25,5 @@ fun getFortuneCookie() : String{
         val index = birthday?.rem(fortunes.size) ?: -1
 
         // Notice return statement can be lifted out of if..else/when. Since if..else/when can be used as expressions in Kotlin.
-        return if(index != -1) fortunes[index] else "\"Enter a valid Day\""
+        return if(index != -1) fortunes[index] else "\"Enter a valid Day!\""
 }
