@@ -11,5 +11,6 @@ fun getFortuneCookie() : String{
     val birthday = readLine()!!.toIntOrNull()
     val index: Int = birthday?.rem(fortunes.size) ?: -1
 
+    // Notice return statement can be lifted out of if..else/when. Since if..else/when can be used as expressions in Kotlin.
     return if(index != -1) fortunes[index] else "Enter a valid Day"
 }
