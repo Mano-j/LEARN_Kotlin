@@ -1,13 +1,14 @@
 fun main(args: Array<String>) {
-    for(counter in 1..10) {
-        val fortune = getFortuneCookie(getBirthday())
+    var fortune = ""
 
-        if(fortune.startsWith("Enter"))
+    while(!fortune.startsWith("Take")){
+        fortune = getFortuneCookie(getBirthday())
+
+        if(fortune.startsWith("Enter")) {
             println("$fortune \n")
-        else
-            println("Your fortune is : $fortune \n")
-
-        if(fortune.startsWith("Take")) break
+            continue
+        }
+        println("Your fortune is : $fortune \n")
     }
 }
 
