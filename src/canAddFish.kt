@@ -6,11 +6,10 @@ fun main (args: Array<String>){
 }
 
 fun canAddFish(tankSize: Double, currentFish : List<Int>, fishSize: Int = 2, hasDecorations: Boolean = true ): Boolean{
-
-    var availableSize = tankSize
-
-    if (hasDecorations) availableSize = tankSize - (tankSize*20).div(100)
-
-    return (availableSize >= currentFish.sum().plus(fishSize))
-
+//    var availableSize = tankSize
+//
+//    if (hasDecorations) availableSize = tankSize - (tankSize*20).div(100)
+//
+////    return (availableSize >= currentFish.sum().plus(fishSize))
+    return (tankSize * if(hasDecorations ) 0.8 else 1.0 ) >= currentFish.sum().plus(fishSize)
 }
